@@ -55,7 +55,3 @@ def calculate():
                 result = (int(result[0]), result[1], int(result[2]))
 
     return render_template('calculate.html', result=result, base_shutter_speed=base_shutter_speed, base_f_value=base_f_value, base_iso=base_iso)
-
-
-if __name__ == '__main__':
-    app.run(port="5500", debug=True)
