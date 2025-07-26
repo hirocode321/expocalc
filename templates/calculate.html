@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h3 style="text-align:center;">基準設定</h3>
+    <p>シャッタースピード: {{ base_shutter_speed }} 秒</p>
+    <p>F値: {{ base_f_value }}</p>
+    <p>ISO感度: {{ base_iso }}</p>
+
+    <form method="post">
+        <label for="shutter_speed">シャッタースピード（秒）</label>
+        <input type="text" id="shutter_speed" name="shutter_speed" placeholder="例: 30">
+
+        <label for="f_value">F値</label>
+        <input type="text" id="f_value" name="f_value" placeholder="例: 2.8">
+
+        <label for="iso">ISO感度</label>
+        <input type="text" id="iso" name="iso" placeholder="例: 3200">
+
+        <button type="submit" name="calculate">計算する</button>
+        <button type="submit" name="change_base" style="background:#ff5252; margin-top:1rem;">基準設定を変更する</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if result %}
+        <div class="result">
+            <h3>計算結果</h3>
+            <p>シャッタースピード: {{ result[0]|int }} 秒</p>
+            <p>F値: {{ result[1] }}</p>
+            <p>ISO感度: {{ result[2] }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

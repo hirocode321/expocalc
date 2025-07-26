@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <form method="post">
+        <label for="base_shutter_speed">シャッタースピード（秒）</label>
+        <input type="text" id="base_shutter_speed" name="base_shutter_speed" required>
+
+        <label for="base_f_value">F値</label>
+        <input type="text" id="base_f_value" name="base_f_value" required>
+
+        <label for="base_iso">ISO感度</label>
+        <input type="text" id="base_iso" name="base_iso" required>
+
+        <button type="submit">計算ページに進む</button>
+    </form>
+</div>
+<div>
+    <h1>露出計算アプリ</h1>
+    <p>
+        このアプリは、基準となる露出設定をもとに、シャッタースピード、F値、ISO感度のうち2つを入力することで、基準露出とほぼ同じになる数値を算出します。
+        主に星空撮影や暗闇での撮影、星空と前景を別撮りするシーンに特化したアプリです。
+    </p>    
+</div>
+{% endblock %}

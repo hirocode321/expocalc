@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: flask-app
+    runtime: python
+    region: tokyo  # または tokyo（Renderで選べるならtokyo推奨）
+    buildCommand: ""  # Flaskはビルド不要なので空
+    startCommand: gunicorn app:app  # ファイル名:Flaskのインスタンス名
+    plan: free
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        value: your-secret-key-here  # Flaskセッションなどに必要（任意）
